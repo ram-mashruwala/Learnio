@@ -10,5 +10,7 @@ migrate.init_app(app=app, db=db)
 
 from app.api import api_bp
 from app.web import web_bp
+from app.auth import auth_bp
 app.register_blueprint(web_bp)
 app.register_blueprint(api_bp)
+app.register_blueprint(auth_bp)
