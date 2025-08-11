@@ -1,5 +1,7 @@
+from flask import render_template
 from . import web_bp
 
+@web_bp.route('/index')
 @web_bp.route('/')
-def list_users():
-    return "<h1>Hello World</h1>"
+def index():
+    return render_template("index.html")
