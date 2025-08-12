@@ -22,7 +22,7 @@ class RegisterForm(FlaskForm):
     def validate_username(self, username):
         user = db.session.scalar(sa.select(User).where(User.username == username.data))
         if user:
-            raise ValidationError("Username is already taken!!")
+            raise ValidationError("Username is already taken!")
 
     def validate_email(self, email):
         email = db.session.scalar(sa.select(User).where(User.email == email.data))
