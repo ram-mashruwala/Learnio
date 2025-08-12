@@ -26,4 +26,15 @@ def login():
 @auth_bp.route("/register", methods=["GET", "POST"])
 def register():
     form = RegisterForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for("auth.login"))
     return render_template("register.html", form=form)
+
+@auth_bp.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("web.index"))
