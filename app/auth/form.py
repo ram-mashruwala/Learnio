@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
     submit_button = SubmitField(label="Submit")
 
 class RegisterForm(FlaskForm):
-    username = StringField(label="Username", validators=[DataRequired(), Length(30)])
+    username = StringField(label="Username", validators=[DataRequired(), Length(max=30)])
     email = EmailField(label="Email", validators=[DataRequired(), Email(message="Must be a valid Email Address")])
     password = PasswordField(label="Password", validators=[DataRequired()])
     repeat_password = PasswordField(label="Repeat Password", validators=[DataRequired(), EqualTo("password", message="Passwords must Match!")])
